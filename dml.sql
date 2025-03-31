@@ -10,7 +10,7 @@ INSERT INTO  proyectoMysql.pais (nombrePais) VALUES
 ('Montserrat'), ('Anguila'), ('Aruba'), ('Bonaire'), ('Sint Eustatius'), 
 ('Saba'), ('Sint Maarten'), ('Guadalupe'), ('Martinica'), 
 ('San Bartolomé'), ('San Martín'), ('Isla de San Bartolomé'), 
-('Isla de San Martín'), ('Isla de San Eustaquio'), ('Isla de Saba');
+('Isla de San Martín'), ('Isla de San Eustaquio'), ('Isla de Saba'),('Estados Unidos');
 
 INSERT INTO proyectomysql.departamento(nombreDepartamento, idPais) VALUES 
 ('Antioquia', 1), ('Cundinamarca', 1), ('Valle del Cauca', 1), 
@@ -25,6 +25,7 @@ INSERT INTO proyectomysql.departamento(nombreDepartamento, idPais) VALUES
 ('Atlántico', 3), ('Bolívar', 3), ('Cesar', 3), ('Córdoba', 3), 
 ('Sucre', 3), ('Guajira', 3), ('Magdalena', 3), ('San Andrés y Providencia', 3),
 ('Archipiélago de San Andrés', 3);
+
 INSERT INTO proyectomysql.ciudad(nombreCiudad, idDepartamento) VALUES 
 ('Medellín', 1), ('Bogotá', 2), ('Cali', 3), ('Bucaramanga', 4), 
 ('Barranquilla', 5), ('Cartagena', 6), ('Santa Marta', 7), 
@@ -48,63 +49,74 @@ INSERT INTO proyectomysql.direccion(direccion, idCiudad) VALUES
 ('Calle 28 # 28-28', 26), ('Carrera 29 # 29-29', 27), ('Avenida 30 # 30-30', 1),
 ('Diagonal 31 # 31-31', 2), ('Transversal 32 # 32-32', 3);
 
-INSERT INTO proyectomysql.empresa(nombreEmpresa) VALUES 
-('Empresa A'), ('Empresa B'), ('Empresa C'), ('Empresa D'), 
-('Empresa E'), ('Empresa F'), ('Empresa G'), ('Empresa H'), 
-('Empresa I'), ('Empresa J'), ('Empresa K'), ('Empresa L'),
-('Empresa M'), ('Empresa N'), ('Empresa O'), ('Empresa P'),
-('Empresa Q'), ('Empresa R'), ('Empresa S'), ('Empresa T'),
-('Empresa U'), ('Empresa V'), ('Empresa W'), ('Empresa X'),
-('Empresa Y'), ('Empresa Z');
+INSERT INTO proyectomysql.empresa (nombreEmpresa) VALUES
+('Campuslands'),('Google'),('Microsoft'),('Apple'),('Amazon'),('Facebook'),
+('Tesla'),('IBM'),('Intel'),('NVIDIA'),('Samsung'),('LG'),('Sony'),('Panasonic'),
+('Honda'),('Toyota'),('Ford'),('General Motors'),('Volkswagen'),('BMW'),
+('Mercedes-Benz'),('Hyundai'),('Netflix'),('Spotify'),('Adobe'),('Oracle'),
+('Salesforce'),('Cisco'),('HP'),('Lenovo'),('Dell'),('Xiaomi'),('Huawei'),('TikTok'),
+('Snapchat'),('Twitter'),('Airbnb'),('Uber'),('Lyft'),('Visa'),('Mastercard'),('PayPal'),
+('Stripe'),('Coca-Cola'),('Pepsi'),('Nestlé'),('Unilever'),('Procter & Gamble'),
+('McDonald\'s'),('Starbucks'),('Disney'),('Chevrolet'),('Susuki');
 INSERT INTO proyectomysql.sedes(nombreSede, idEmpresa) VALUES 
-('Sede A', 1), ('Sede B', 2), ('Sede C', 3), ('Sede D', 4), 
-('Sede E', 5), ('Sede F', 6), ('Sede G', 7), ('Sede H', 8), 
-('Sede I', 9), ('Sede J', 10), ('Sede K', 11), ('Sede L', 12),
-('Sede M', 13), ('Sede N', 14), ('Sede O', 15), ('Sede P', 16),
-('Sede Q', 17), ('Sede R', 18), ('Sede S', 19), ('Sede T', 20),
-('Sede U', 21), ('Sede V', 22), ('Sede W', 23), ('Sede X', 24),
-('Sede Y', 25), ('Sede Z', 26);
-
+('Sede Bucaramanga', 1), ('Sede Mountain View', 2), ('Sede Redmond', 3), ('Sede Cupertino', 4), 
+('Sede Seattle', 5), ('Sede Menlo Park', 6), ('Sede Palo Alto', 7), ('Sede Armonk', 8), 
+('Sede Santa Clara', 9), ('Sede Santa Clara', 10), ('Sede Seúl', 11), ('Sede Seúl', 12),
+('Sede Tokio', 13), ('Sede Osaka', 14), ('Sede Tokio', 15), ('Sede Toyota City', 16),
+('Sede Dearborn', 17), ('Sede Detroit', 18), ('Sede Wolfsburgo', 19), ('Sede Múnich', 20),
+('Sede Seúl', 21), ('Sede Seúl', 22), ('Sede Los Gatos', 23), ('Sede Estocolmo', 24),
+('Sede San José', 25), ('Sede Austin', 26),('San Francisco', 27),('San José', 28),
+('Palo Alto',29),('Pekín',30),('Round Rock',31),('Pekín',32),('Shenzhen',33),
+('Pekín',34),('Santa Mónica',35),('San Francisco',36),('San Francisco',37),('San Francisco',38),
+('San Francisco',39),('Foster City', 40),('Purchase',41),('San José',42),('Dublín', 43),('Atlanta', 44),
+('Purchase',45),('Vevey', 46),('Londres',47),('Cincinnati',48),('Chicago',49),('Seattle',50),
+('Burbank',51),('Sede Bucaramanga', 52),('Sede Floridablanca', 53);
 INSERT INTO proyectomysql.direccionSede(idSede, idDireccion) VALUES 
 (1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7), (8, 8),
 (9, 9), (10, 10), (11, 11), (12, 12), (13, 13), (14, 14),
 (15, 15), (16, 16), (17, 17), (18, 18), (19, 19), (20, 20),
-(21, 21), (22, 22), (23, 23), (24, 24), (25, 25), (26, 26);
+(21, 21), (22, 22), (23, 23), (24, 24), (25, 25), (26, 26),(27,27),(28,28),
+(29,29), (30,30), (31,31),(32,32),(33,33),(34,34),(35,35), (36,36),(37,37),
+(38,38),(39,39),(40,40),(41,41),(42,42),(43,43),(44,44),(45,45),(46,46);
 INSERT INTO proyectomysql.habilidades(nombreHabilidad) VALUES 
-('Habilidad A'), ('Habilidad B'), ('Habilidad C'), ('Habilidad D'), 
-('Habilidad E'), ('Habilidad F'), ('Habilidad G'), ('Habilidad H'), 
-('Habilidad I'), ('Habilidad J'), ('Habilidad K'), ('Habilidad L'),
-('Habilidad M'), ('Habilidad N'), ('Habilidad O'), ('Habilidad P'),
-('Habilidad Q'), ('Habilidad R'), ('Habilidad S'), ('Habilidad T'),
-('Habilidad U'), ('Habilidad V'), ('Habilidad W'), ('Habilidad X'),
-('Habilidad Y'), ('Habilidad Z');
-INSERT INTO proyectomysql.horario(fecha, descripcion, am, pm) VALUES 
-('2023-01-01', 'Descripción A', 'AM A', 'PM A'), 
-('2023-01-02', 'Descripción B', 'AM B', 'PM B'), 
-('2023-01-03', 'Descripción C', 'AM C', 'PM C'), 
-('2023-01-04', 'Descripción D', 'AM D', 'PM D'), 
-('2023-01-05', 'Descripción E', 'AM E', 'PM E'), 
-('2023-01-06', 'Descripción F', 'AM F', 'PM F'), 
-('2023-01-07', 'Descripción G', 'AM G', 'PM G'), 
-('2023-01-08', 'Descripción H', 'AM H', 'PM H'), 
-('2023-01-09', 'Descripción I', 'AM I', 'PM I'), 
-('2023-01-10', 'Descripción J', 'AM J', 'PM J'), 
-('2023-01-11', 'Descripción K', 'AM K', 'PM K'), 
-('2023-01-12', 'Descripción L', 'AM L', 'PM L'),
-('2023-01-13', 'Descripción M', 'AM M', 'PM M'), 
-('2023-01-14', 'Descripción N', 'AM N', 'PM N'), 
-('2023-01-15', 'Descripción O', 'AM O', 'PM O'), 
-('2023-01-16', 'Descripción P', 'AM P', 'PM P'), 
-('2023-01-17', 'Descripción Q', 'AM Q', 'PM Q'), 
-('2023-01-18', 'Descripción R', 'AM R', 'PM R'), 
-('2023-01-19', 'Descripción S', 'AM S', 'PM S'), 
-('2023-01-20', 'Descripción T', 'AM T', 'PM T'), 
-('2023-01-21', 'Descripción U', 'AM U', 'PM U'), 
-('2023-01-22', 'Descripción V', 'AM V', 'PM V'), 
-('2023-01-23', 'Descripción W', 'AM W', 'PM W'), 
-('2023-01-24', 'Descripción X', 'AM X', 'PM X'), 
-('2023-01-25', 'Descripción Y', 'AM Y', 'PM Y'), 
-('2023-01-26', 'Descripción Z', 'AM Z', 'PM Z');
+('Comunicación efectiva'),('Paciencia'),('Empatía'),('Trabajo en equipo'),
+('Liderazgo'),('Planificación y organización'),('Capacidad de motivar a los estudiantes'),('Evaluación y retroalimentación'),
+('Creatividad e innovación'),('Adaptabilidad a cambios'),('Resolución de problemas'),('Gestión del tiempo'),
+('Escucha activa'),('Pensamiento crítico'),('Manejo de conflictos'),('Uso de tecnología educativa'),('Diseño de materiales didácticos'),
+('Enseñanza personalizada'),('Gestión de aula'),('Ética profesional'),('Programación en Python'),('Programación en Java'),
+('Desarrollo web con HTML, CSS y JavaScript'),('Administración de bases de datos'),
+('Ciberseguridad'),('Redes y telecomunicaciones'),('Uso de herramientas de aprendizaje en línea'),('Análisis de datos'),
+('Inteligencia artificial y aprendizaje automático'),('Desarrollo de software'),('Gestión de proyectos de TI'),('Arquitectura de software'),
+('Desarrollo de aplicaciones móviles'),('Metodologías ágiles (Scrum, Kanban)'),('Administración de sistemas operativos'),('Cloud Computing'),
+('Administración de servidores'),('Desarrollo de videojuegos'),('Automatización de procesos'),('Robótica educativa'),('Blockchain'),
+('Internet de las cosas (IoT)'),('Seguridad informática'),('Desarrollo de APIs'),('Machine Learning aplicado a la educación'),
+('Gestión de entornos virtuales de aprendizaje'),('Uso de plataformas LMS (Moodle, Blackboard)'),('Integración de TIC en la educación'),('Desarrollo de software educativo');
+
+INSERT INTO proyectomysql.horario(fecha, descripcion, franjaHoraria) VALUES 
+('2023-01-01', 'Descripción A', 'AM'), 
+('2023-01-02', 'Descripción B', 'PM'), 
+('2023-01-03', 'Descripción C', 'AM'), 
+('2023-01-04', 'Descripción D', 'AM'), 
+('2023-12-05', 'Descripción E', 'PM'), 
+('2023-01-06', 'Descripción F', 'AM'), 
+('2023-01-15', 'Descripción G', 'PM'), 
+('2024-01-02', 'Descripción G', 'AM'), 
+('2025-01-16', 'Descripción G', 'PM'), 
+('2025-01-06', 'Descripción G', 'PM'), 
+('2025-01-09', 'Descripción G', 'AM'), 
+('2024-01-19', 'Descripción G', 'AM'), 
+('2025-04-09', 'Descripción G', 'AM'), 
+('2025-03-02', 'Descripción G', 'PM'), 
+('2025-03-16', 'Descripción G', 'AM'), 
+('2025-02-18', 'Descripción G', 'PM'), 
+('2025-03-17', 'Descripción G', 'AM'), 
+('2025-06-08', 'Descripción G', 'PM'), 
+('2025-02-04', 'Descripción G', 'PM'), 
+('2025-07-20', 'Descripción G', 'AM'), 
+('2025-11-30', 'Descripción G', 'PM'), 
+('2025-12-25', 'Descripción G', 'AM'), 
+('2025-09-24', 'Descripción G', 'AM'), 
+('2025-13-27', 'Descripción G', 'PM');
 
 INSERT INTO proyectomysql.estadoSalon(nombreEstado) VALUES 
 ('Estado A'), ('Estado B'), ('Estado C'), ('Estado D'), 
