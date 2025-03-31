@@ -48,8 +48,7 @@ CREATE TABLE IF NOT EXISTS horario(
     id INT AUTO_INCREMENT PRIMARY KEY,
     fecha DATE,
     descripcion VARCHAR(50),
-    franjaHoraria VARCHAR(50)
-    
+    franjaHoraria VARCHAR(50)  
 );
 CREATE TABLE IF NOT EXISTS estadoSalon(
     id INT AUTO_INCREMENT PRIMARY KEY,
