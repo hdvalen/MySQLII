@@ -1,3 +1,4 @@
+
 INSERT INTO  proyectoMysql.pais (nombrePais) VALUES 
 ('Colombia'), ('Argentina'), ('Brasil'), ('Chile'), ('Ecuador'),('Peru'), 
 ('Paraguay'), ('Uruguay'), ('Venezuela'), ('Bolivia'), ('Costa Rica'), 
@@ -12,7 +13,7 @@ INSERT INTO  proyectoMysql.pais (nombrePais) VALUES
 ('San Bartolomé'), ('San Martín'), ('Isla de San Bartolomé'), 
 ('Isla de San Martín'), ('Isla de San Eustaquio'), ('Isla de Saba'),('Estados Unidos');
 
-INSERT INTO proyectomysql.departamento(nombreDepartamento, idPais) VALUES 
+INSERT INTO proyectoMysql.departamento(nombreDepartamento, idPais) VALUES 
 ('Antioquia', 1), ('Cundinamarca', 1), ('Valle del Cauca', 1), 
 ('Santander', 1), ('Atlántico', 1), ('Bolívar', 1), ('Cesar', 1), 
 ('Norte de Santander', 1), ('Tolima', 1), ('Huila', 1), 
@@ -26,7 +27,7 @@ INSERT INTO proyectomysql.departamento(nombreDepartamento, idPais) VALUES
 ('Sucre', 3), ('Guajira', 3), ('Magdalena', 3), ('San Andrés y Providencia', 3),
 ('Archipiélago de San Andrés', 3);
 
-INSERT INTO proyectomysql.ciudad(nombreCiudad, idDepartamento) VALUES 
+INSERT INTO proyectoMysql.ciudad(nombreCiudad, idDepartamento) VALUES 
 ('Medellín', 1), ('Bogotá', 2), ('Cali', 3), ('Bucaramanga', 4), 
 ('Barranquilla', 5), ('Cartagena', 6), ('Santa Marta', 7), 
 ('Cúcuta', 8), ('Pereira', 9), ('Manizales', 10), ('Armenia', 11),
@@ -36,7 +37,7 @@ INSERT INTO proyectomysql.ciudad(nombreCiudad, idDepartamento) VALUES
 ('San José del Guaviare', 24), ('Yopal', 25), ('Arauca', 26),
 ('Villavicencio', 27);
 
-INSERT INTO proyectomysql.direccion(direccion, idCiudad) VALUES 
+INSERT INTO proyectoMysql.direccion(direccion, idCiudad) VALUES 
 ('Calle 1 # 1-1', 1), ('Carrera 2 # 2-2', 2), ('Avenida 3 # 3-3', 3), 
 ('Transversal 4 # 4-4', 4), ('Diagonal 5 # 5-5', 5), ('Calle 6 # 6-6', 6),
 ('Carrera 7 # 7-7', 7), ('Avenida 8 # 8-8', 8), ('Transversal 9 # 9-9', 9),
@@ -49,7 +50,7 @@ INSERT INTO proyectomysql.direccion(direccion, idCiudad) VALUES
 ('Calle 28 # 28-28', 26), ('Carrera 29 # 29-29', 27), ('Avenida 30 # 30-30', 1),
 ('Diagonal 31 # 31-31', 2), ('Transversal 32 # 32-32', 3);
 
-INSERT INTO proyectomysql.empresa (nombreEmpresa) VALUES
+INSERT INTO proyectoMysql.empresa (nombreEmpresa) VALUES
 ('Campuslands'),('Google'),('Microsoft'),('Apple'),('Amazon'),('Facebook'),
 ('Tesla'),('IBM'),('Intel'),('NVIDIA'),('Samsung'),('LG'),('Sony'),('Panasonic'),
 ('Honda'),('Toyota'),('Ford'),('General Motors'),('Volkswagen'),('BMW'),
@@ -58,7 +59,7 @@ INSERT INTO proyectomysql.empresa (nombreEmpresa) VALUES
 ('Snapchat'),('Twitter'),('Airbnb'),('Uber'),('Lyft'),('Visa'),('Mastercard'),('PayPal'),
 ('Stripe'),('Coca-Cola'),('Pepsi'),('Nestlé'),('Unilever'),('Procter & Gamble'),
 ('McDonald\'s'),('Starbucks'),('Disney'),('Chevrolet'),('Susuki');
-INSERT INTO proyectomysql.sedes(nombreSede, idEmpresa) VALUES 
+INSERT INTO proyectoMysql.sedes(nombreSede, idEmpresa) VALUES 
 ('Sede Bucaramanga', 1), ('Sede Mountain View', 2), ('Sede Redmond', 3), ('Sede Cupertino', 4), 
 ('Sede Seattle', 5), ('Sede Menlo Park', 6), ('Sede Palo Alto', 7), ('Sede Armonk', 8), 
 ('Sede Santa Clara', 9), ('Sede Santa Clara', 10), ('Sede Seúl', 11), ('Sede Seúl', 12),
@@ -71,14 +72,14 @@ INSERT INTO proyectomysql.sedes(nombreSede, idEmpresa) VALUES
 ('San Francisco',39),('Foster City', 40),('Purchase',41),('San José',42),('Dublín', 43),('Atlanta', 44),
 ('Purchase',45),('Vevey', 46),('Londres',47),('Cincinnati',48),('Chicago',49),('Seattle',50),
 ('Burbank',51),('Sede Bucaramanga', 52),('Sede Floridablanca', 53);
-INSERT INTO proyectomysql.direccionSede(idSede, idDireccion) VALUES 
+INSERT INTO proyectoMysql.direccionSede(idSede, idDireccion) VALUES 
 (1, 1), (2, 2), (3, 3), (4, 4), (5, 5), (6, 6), (7, 7), (8, 8),
 (9, 9), (10, 10), (11, 11), (12, 12), (13, 13), (14, 14),
 (15, 15), (16, 16), (17, 17), (18, 18), (19, 19), (20, 20),
 (21, 21), (22, 22), (23, 23), (24, 24), (25, 25), (26, 26),(27,27),(28,28),
 (29,29), (30,30), (31,31),(32,32),(33,33),(34,34),(35,35), (36,36),(37,37),
 (38,38),(39,39),(40,40),(41,41),(42,42),(43,43),(44,44),(45,45),(46,46);
-INSERT INTO proyectomysql.habilidades(nombreHabilidad) VALUES 
+INSERT INTO proyectoMysql.habilidades(nombreHabilidad) VALUES 
 ('Comunicación efectiva'),('Paciencia'),('Empatía'),('Trabajo en equipo'),
 ('Liderazgo'),('Planificación y organización'),('Capacidad de motivar a los estudiantes'),('Evaluación y retroalimentación'),
 ('Creatividad e innovación'),('Adaptabilidad a cambios'),('Resolución de problemas'),('Gestión del tiempo'),
@@ -92,7 +93,7 @@ INSERT INTO proyectomysql.habilidades(nombreHabilidad) VALUES
 ('Internet de las cosas (IoT)'),('Seguridad informática'),('Desarrollo de APIs'),('Machine Learning aplicado a la educación'),
 ('Gestión de entornos virtuales de aprendizaje'),('Uso de plataformas LMS (Moodle, Blackboard)'),('Integración de TIC en la educación'),('Desarrollo de software educativo');
 
-INSERT INTO proyectomysql.horario(fecha, descripcion, franjaHoraria) VALUES 
+INSERT INTO proyectoMysql.horario(fecha, descripcion, franjaHoraria) VALUES 
 ('2025-04-01', 'Introducción a la Programación', '08:00 - 10:00'),
 ('2025-04-01', 'Fundamentos de Bases de Datos', '10:30 - 12:30'),
 ('2025-04-01', 'Taller de HTML y CSS', '14:00 - 16:00'),
@@ -139,7 +140,7 @@ INSERT INTO proyectomysql.horario(fecha, descripcion, franjaHoraria) VALUES
 ('2025-04-15', 'Taller de GraphQL', '10:30 - 12:30'),
 ('2025-04-15', 'Práctica de Ciberseguridad en Redes', '14:00 - 16:00');
 
-INSERT INTO proyectomysql.estadoSalon(nombreEstado) VALUES 
+INSERT INTO proyectoMysql.estadoSalon(nombreEstado) VALUES 
 ('Disponible'),
 ('Ocupado'),
 ('En mantenimiento'),
@@ -150,36 +151,41 @@ INSERT INTO proyectomysql.estadoSalon(nombreEstado) VALUES
 ('Cerrado por remodelación'),
 ('Inspección técnica'),
 ('Desinfección en curso');
-INSERT INTO proyectomysql.salon(nombreSalon, idEstadoSalon) VALUES 
-('Apolo', 1),('Artemis', 2),('Galileo', 3),('Newton', 4),
-('Tesla', 5),('Einstein', 6),('Curie', 7),('Turing', 8),
-('Hawking', 9),('Kepler', 10),('Fibonacci', 1),('Copérnico', 2),
-('Da Vinci', 3),('Pitagoras', 4),('Euclides', 5),('Boole', 6),
-('Von Neumann', 7),('Lovecraft', 8),('Pascal', 9),('Ramanujan', 10);
-INSERT INTO proyectomysql.sgdb(descripcion) VALUES 
+INSERT INTO proyectoMysql.salon(nombreSalon, capacidad,idEstadoSalon) VALUES 
+('Apolo', 30, 1),
+('Artemis', 25,5 ),
+('Orion', 20, 8),
+('Sputnik', 20, 2),
+('Galileo', 50, 3),
+('Kepler', 35, 4),
+('Cassini', 40, 6),
+('Hubble', 30, 9),
+('Voyager', 100, 10),
+('Curiosity', 15, 7);
+INSERT INTO proyectoMysql.sgdb(descripcion) VALUES 
 ('MySQL'),('PostgreSQL'),('Oracle Database'),('SQL Server'),
 ('MongoDB'),('MariaDB'),('Firebase Firestore'),
 ('Redis'),('Cassandra'),('IBM Db2');
-INSERT INTO proyectomysql.estadoModuloR(estado) VALUES 
+INSERT INTO proyectoMysql.estadoModuloR(estado) VALUES 
 ('Activo'),('Inactivo'),('En mantenimiento'),('Disponible'),
 ('Ocupado'),('Reservado'),('En revisión'),
 ('Deshabilitado'),('Pendiente de actualización'),
 ('Con error de conexión'),('Listo para uso'),
 ('Fallo crítico'),('Requiere calibración'),
 ('En prueba'),('Cargando configuración');
-INSERT INTO proyectomysql.tipoEvaluacion(tipo, porcentaje) VALUES 
+INSERT INTO proyectoMysql.tipoEvaluacion(tipo, porcentaje) VALUES 
 ('Evaluacion Teorica', '30%'), ('Evaluacion Practica', '60%'), ('Trabajos', '10%'), 
 ('Quizes', '10%');
-INSERT INTO proyectomysql.estadoEvaluacion(estado) VALUES 
+INSERT INTO proyectoMysql.estadoEvaluacion(estado) VALUES 
 ('Pendiente'),('En proceso'),('Finalizada'),
 ('Aprobada'),('Reprobada'),('Revisión requerida'),
 ('Anulada'),('Corregida'),('Devuelta para ajustes'),('Publicada');
-INSERT INTO proyectomysql.estadoCamper(tipoEstado) VALUES 
+INSERT INTO proyectoMysql.estadoCamper(tipoEstado) VALUES 
 ('En proceso de Ingreso'), ('Inscrito'), ('Aprobado'), ('Cursando'), 
 ('Graduado'), ('Expulsado'), ('Retirado');
-INSERT INTO proyectomysql.nivelRiesgo(tipoNivel) VALUES 
+INSERT INTO proyectoMysql.nivelRiesgo(tipoNivel) VALUES 
 ('Medio'), ('Moderado '), ('Alto');
-INSERT INTO proyectomysql.acudiente(identificacion, nombre, apellido, telefono) VALUES 
+INSERT INTO proyectoMysql.acudiente(identificacion, nombre, apellido, telefono) VALUES 
 ('100001', 'Carlos', 'Gómez', '3123456789'),
 ('100002', 'María', 'Rodríguez', '3225678901'),
 ('100003', 'Juan', 'Pérez', '3112345678'),
@@ -230,7 +236,7 @@ INSERT INTO proyectomysql.acudiente(identificacion, nombre, apellido, telefono) 
 ('100048', 'Liliana', 'Montoya', '3578901234'),
 ('100049', 'Kevin', 'Hurtado', '3589012345'),
 ('100050', 'Tatiana', 'Luna', '3590123456');
-INSERT INTO proyectomysql.trainers(nombre, apellido, identificacion, idSede) VALUES 
+INSERT INTO proyectoMysql.trainers(nombre, apellido, identificacion, idSede) VALUES 
 ('Carlos', 'Gómez', '900001', 1),
 ('María', 'Rodríguez', '900002', 2),
 ('Juan', 'Pérez', '900003', 3),
@@ -281,14 +287,14 @@ INSERT INTO proyectomysql.trainers(nombre, apellido, identificacion, idSede) VAL
 ('Liliana', 'Montoya', '900048', 8),
 ('Kevin', 'Hurtado', '900049', 9),
 ('Tatiana', 'Luna', '900050', 10);
-INSERT INTO proyectomysql.habilidadesTrainer(idTrainer,idHabilidad) VALUES
+INSERT INTO proyectoMysql.habilidadesTrainer(idTrainer,idHabilidad) VALUES
 (1, 1),(2, 2),(3, 3),(4, 4),(5, 5),(6, 6),(7, 7),(8, 8),(9, 9),(10, 10),
 (11, 11),(12, 12),(13, 13),(14, 14),(15, 15),(16, 16),(17, 17),(18, 18),(19, 19),
 (20, 20),(21, 21),(22, 22),(23, 23),(24, 24),(25, 25),(26, 26),(27, 27),
 (28, 28),(29, 29),(30, 30),(31, 31),(32, 32),(33, 33),(34, 34),
 (35, 35),(36, 36),(37, 37),(38, 38),(39, 39),(40, 40),(41, 41),(42, 42),
 (43, 43),(44, 44),(45, 45),(46, 46),(47, 47),(48, 48),(49, 49),(50, 50);
-INSERT INTO proyectomysql.trainerHorario(idTrainer,idHorario,idSalon) VALUES
+INSERT INTO proyectoMysql.trainerHorario(idTrainer,idHorario,idSalon) VALUES
 (1, 1, 1),(2, 2, 2),(3, 3, 3),(4, 4, 4),(5, 5, 5),(6, 6, 6),(7, 7, 7),(8, 8, 8),
 (9, 9, 9),(10, 10, 10),(11, 11, 1),(12, 12, 2),(13, 13, 3),(14, 14, 4),(15, 15, 5),
 (16, 16, 6),(17, 17, 7),(18, 18, 8),(19, 19, 9),(20, 20, 10),(21, 21, 1),(22, 22, 2),
@@ -296,7 +302,7 @@ INSERT INTO proyectomysql.trainerHorario(idTrainer,idHorario,idSalon) VALUES
 (30, 30, 10),(31, 31, 1),(32, 32, 2),(33, 33, 3),(34, 34, 4),(35, 35, 5),(36, 36, 6),
 (37, 37, 7),(38, 38, 8),(39, 39, 9),(40, 40, 10),(41, 41, 1),(42, 42, 2),(43, 43, 3),
 (44, 44, 4),(45, 45, 5);
-INSERT INTO proyectomysql.rutaAprendizaje(nombreRuta) VALUES
+INSERT INTO proyectoMysql.rutaAprendizaje(nombreRuta) VALUES
 ('Desarrollo Web Frontend'),('Desarrollo Web Backend'),('Bases de Datos Relacionales'),('Bases de Datos NoSQL'),
 ('Programación en Python'),('Programación en Java'),
 ('Desarrollo de Aplicaciones Móviles'),('Desarrollo de Aplicaciones en la Nube'),
@@ -317,7 +323,7 @@ INSERT INTO proyectomysql.rutaAprendizaje(nombreRuta) VALUES
 ('Frameworks de Desarrollo Web'),('Scrum y Kanban'),('Sistemas de Control de Versiones Distribuidos'),
 ('Desarrollo de Software para Empresas'),('Desarrollo de Sistemas de Información Geográfica (GIS)'),
 ('Programación con SQL'),('Desarrollo de Aplicaciones con Node.js'),('Gestión de Base de Datos con MongoDB');
-INSERT INTO proyectomysql.grupo(nombreGrupo,idTrainer,idRutaAprendizaje) VALUES
+INSERT INTO proyectoMysql.grupo(nombreGrupo,idTrainer,idRutaAprendizaje) VALUES
 ('J1', 1, 1),('J2', 2, 2),('U1', 3, 3),('U2', 4, 4),('J3', 5, 5),('J4', 6, 6),
 ('U3', 7, 7),('U4', 8, 8),('J5', 9, 9),('J6', 10, 10),('U5', 11, 11),('U6', 12, 12),
 ('J7', 13, 13),('J8', 14, 14),('U7', 15, 15),('U8', 16, 16),('J9', 17, 17),
@@ -328,7 +334,7 @@ INSERT INTO proyectomysql.grupo(nombreGrupo,idTrainer,idRutaAprendizaje) VALUES
 ('J20', 38, 38),('U19', 39, 39),('U20', 40, 40),('J21', 41, 41),
 ('J22', 42, 42),('U21', 43, 43),('U22', 44, 44),('J23', 45, 45),
 ('J24', 46, 46),('U23', 47, 47),('U24', 48, 48),('J25', 49, 49),('J26', 50, 50);
-INSERT INTO proyectomysql.modulos(nombreModulo) VALUES
+INSERT INTO proyectoMysql.modulos(nombreModulo) VALUES
 ('Desarrollo Web Frontend'),('Desarrollo Web Backend'),('Bases de Datos Relacionales'),
 ('Bases de Datos NoSQL'),('Programación en Python'),('Programación en Java'),
 ('Desarrollo de Aplicaciones Móviles'),('Desarrollo en la Nube'),('Ciberseguridad'),
@@ -345,14 +351,14 @@ INSERT INTO proyectomysql.modulos(nombreModulo) VALUES
 ('Sistemas de Gestión Empresarial (ERP)'),('Gestión de Configuración de Software'),('Sistemas de Control de Versiones Distribuidos'),
 ('Arquitectura de Microservicios'),('Sistemas de Gestión de Proyectos de Software'),
 ('Diseño de Interfaces de Usuario (UI/UX)'),('Análisis y Visualización de Datos'),('Desarrollo de Software de Gestión de Empresas'),('Desarrollo en TypeScript');
-INSERT INTO proyectomysql.sRuta(idSGDB,idRutaAprendizaje,idSGDBA) VALUES
+INSERT INTO proyectoMysql.sRuta(idSGDB,idRutaAprendizaje,idSGDBA) VALUES
 (1, 1, 2),(2, 2, 3),(1, 4, 5),(3, 6, 4),(2, 7, 1),(4, 8, 5),(5, 9, 6),(1, 10, 3),(2, 11, 4),
 (3, 12, 1),(5, 13, 2),(4, 14, 3),(1, 15, 6),(2, 16, 5),(1, 17, 4),(3, 18, 2),(2, 19, 1),
 (4, 20, 3),(5, 21, 6),(1, 22, 5),(2, 23, 4),(3, 24, 1),(1, 25, 2),(5, 26, 6),(4, 27, 3),
 (2, 28, 5),(1, 29, 6),(3, 30, 1),(4, 31, 2),(5, 32, 4),(1, 33, 3),(2, 34, 5),(3, 35, 4),
 (1, 36, 6),(5, 37, 2),(2, 38, 1),(4, 39, 3),(1, 40, 2),(3, 41, 5),(2, 42, 4),(5, 43, 1),
 (4, 44, 3),(1, 45, 2),(2, 46, 6),(5, 47, 3),(4, 48, 1),(1, 49, 5),(3, 50, 6);
-INSERT INTO proyectomysql.modulosRuta(fechaInicio,fechaFin,idModulo,idRutaAprendizaje,idEstadoModuloR) VALUES
+INSERT INTO proyectoMysql.modulosRuta(fechaInicio,fechaFin,idModulo,idRutaAprendizaje,idEstadoModuloR) VALUES
 ('2025-01-01', '2025-03-01', 1, 1, 1),('2025-02-01', '2025-04-01', 2, 2, 2),
 ('2025-03-01', '2025-05-01', 3, 3, 3),('2025-04-01', '2025-06-01', 4, 4, 4),
 ('2025-05-01', '2025-07-01', 5, 5, 5),('2025-06-01', '2025-08-01', 6, 6, 1),
@@ -378,7 +384,7 @@ INSERT INTO proyectomysql.modulosRuta(fechaInicio,fechaFin,idModulo,idRutaAprend
 ('2028-09-01', '2028-11-01', 45, 5, 5),('2028-10-01', '2028-12-01', 46, 6, 1),
 ('2028-11-01', '2029-01-01', 47, 7, 2),('2028-12-01', '2029-02-01', 48, 8, 3),
 ('2029-01-01', '2029-03-01', 49, 9, 4),('2029-02-01', '2029-04-01', 50, 10, 5);
-INSERT INTO proyectomysql.evaluacion (descripcion,fecha,idTipoEvaluacion,idModuloRuta,idEstadoEvaluacion) VALUES 
+INSERT INTO proyectoMysql.evaluacion (descripcion,fecha,idTipoEvaluacion,idModuloRuta,idEstadoEvaluacion) VALUES 
 ('Examen de Sistemas', '2025-01-01', 1, 1, 1),('Examen de Programación', '2025-01-10', 2, 2, 2),
 ('Prueba de Base de Datos', '2025-02-01', 1, 3, 3),('Evaluación de Redacción', '2025-02-15', 3, 4, 4),
 ('Test de Lógica Computacional', '2025-03-01', 1, 5, 5),('Evaluación de Seguridad Informática', '2025-03-10', 2, 6, 1),
@@ -404,7 +410,7 @@ INSERT INTO proyectomysql.evaluacion (descripcion,fecha,idTipoEvaluacion,idModul
 ('Examen de Arquitectura de Software', '2026-11-01', 2, 45, 5),('Evaluación de UI/UX', '2026-11-10', 3, 46, 1),
 ('Test de Desarrollo Ágil', '2026-12-01', 1, 47, 2),('Evaluación de Métodos de Compilación', '2026-12-15', 2, 48, 3),
 ('Examen de Robótica', '2027-01-01', 3, 49, 4),('Prueba de Lenguajes de Bajo Nivel', '2027-01-10', 1, 50, 5);
-INSERT INTO proyectomysql.sesiones(fecha,tema,idModuloRuta) VALUES 
+INSERT INTO proyectoMysql.sesiones(fecha,tema,idModuloRuta) VALUES 
 ('2025-01-01', 'Introducción a la Programación', 1),('2025-01-05', 'Algoritmos y Lógica de Programación', 2),
 ('2025-01-10', 'Estructuras de Datos Básicas', 3),('2025-01-15', 'Fundamentos de Bases de Datos', 4),
 ('2025-01-20', 'Redes de Computadores I', 5),('2025-01-25', 'Sistemas Operativos I', 6),
@@ -429,7 +435,7 @@ INSERT INTO proyectomysql.sesiones(fecha,tema,idModuloRuta) VALUES
 ('2025-08-10', 'Pruebas de Software y Calidad', 45),('2025-08-15', 'IoT y Dispositivos Conectados', 46),
 ('2025-08-20', 'Desarrollo con Frameworks Frontend', 47),('2025-08-25', 'Desarrollo con Frameworks Backend', 48),
 ('2025-09-01', 'Prácticas de UI/UX', 49),('2025-09-05', 'Desarrollo con Java EE', 50);
-INSERT INTO proyectomysql.campers(nombre, apellido,identificacion,telefono,fechaInscripcion, idSede, idNivelRiesgo,idAcudiente, idEstadoCamper,idRutaAprendizaje) VALUES 
+INSERT INTO proyectoMysql.campers(nombre, apellido,identificacion,telefono,fechaInscripcion, idSede, idNivelRiesgo,idAcudiente, idEstadoCamper,idRutaAprendizaje) VALUES 
 ('Carlos', 'Gómez', '123456789', '3012345678', '2025-01-01', 1, 1, 1, 1, 1),
 ('Ana', 'Pérez', '987654321', '3023456789', '2025-01-05', 2, 2, 2, 2, 2),
 ('Luis', 'Martínez', '456789123', '3034567890', '2025-01-10', 3, 3, 3, 3, 3),
@@ -479,8 +485,12 @@ INSERT INTO proyectomysql.campers(nombre, apellido,identificacion,telefono,fecha
 ('Laura', 'Ferrer', '987654321', '3478901234', '2025-08-20', 47, 2, 47, 2, 47),
 ('Marcelo', 'Ruiz', '654321987', '3489012345', '2025-08-25', 48, 3, 48, 3, 48),
 ('Joaquín', 'Castro', '543210987', '3490123456', '2025-09-01', 49, 1, 49, 1, 49),
-('Rosa', 'Pérez', '432109876', '3501234567', '2025-09-05', 50, 2, 50, 2, 50);
-INSERT INTO proyectomysql.direccioncamper(idCamper, idDireccion) VALUES
+('Rosa', 'Pérez', '432109876', '3501234567', '2025-09-05', 50, 2, 50, 2, 50)
+('Andres', 'Delgado', '546545', '32120326', '2025-11-05', 50, 2, 50, 5, 19),
+('Juan', 'Ruiz', '546545', '32120326', '2025-11-05', 50, 2, 50, 5, 12);
+INSERT INTO proyectoMysql.campers(nombre, apellido,identificacion,telefono,fechaInscripcion, idSede, idNivelRiesgo,idAcudiente, idEstadoCamper) VALUES 
+('Sebastian', 'Suarez', '546545', '32120326', '2025-11-05', 50, 2, 50, 6);
+INSERT INTO proyectoMysql.direccioncamper(idCamper, idDireccion) VALUES
 (1, 10), (2, 12), (3, 03), (4, 14), (5, 15),
 (6, 16), (7, 17), (8, 08), (9, 09), (10, 10),
 (11, 11), (12, 12), (13, 13), (14, 14), (15, 15),
@@ -490,7 +500,7 @@ INSERT INTO proyectomysql.direccioncamper(idCamper, idDireccion) VALUES
 (31, 11), (32, 12), (33, 33), (34, 14), (35, 35),
 (36, 36), (37, 17), (38, 18), (39, 14), (45,14),
 (46, 46), (47, 47), (48, 48), (49, 19), (50, 50);
-INSERT INTO proyectomysql.asistencia(idCamper, idSesion) VALUES
+INSERT INTO proyectoMysql.asistencia(idCamper, idSesion) VALUES
 (1, 21), (2, 22), (3, 23), (4, 24), (5, 25),
 (6, 26), (7, 27), (8, 28), (9, 29), (10, 20),
 (11, 21), (12, 22), (13, 23), (14, 14), (15, 25),
@@ -501,7 +511,7 @@ INSERT INTO proyectomysql.asistencia(idCamper, idSesion) VALUES
 (36, 26), (37, 37), (38, 38), (39, 39), (40, 20),
 (41, 21), (42, 42), (43, 23), (44, 44), (45, 45),
 (46, 46), (47, 47), (48, 28), (49, 49), (50, 20);
-INSERT INTO proyectomysql.graduados(fecha, idCamper) VALUES
+INSERT INTO proyectoMysql.graduados(fecha, idCamper) VALUES
 ('2024-01-15', 1), ('2024-01-20', 2), ('2024-01-25', 3), ('2024-02-01', 4), ('2024-02-05', 5),
 ('2024-02-10', 6), ('2024-02-15', 7), ('2024-02-20', 8), ('2024-02-25', 9), ('2024-03-01', 10),
 ('2024-03-05', 11), ('2024-03-10', 12), ('2024-03-15', 13), ('2024-03-20', 14), ('2024-03-25', 15),
@@ -512,7 +522,7 @@ INSERT INTO proyectomysql.graduados(fecha, idCamper) VALUES
 ('2024-07-10', 36), ('2024-07-15', 37), ('2024-07-20', 38), ('2024-07-25', 39), ('2024-08-01', 40),
 ('2024-08-05', 41), ('2024-08-10', 42), ('2024-08-15', 43), ('2024-08-20', 44), ('2024-08-25', 45),
 ('2024-09-01', 46), ('2024-09-05', 47), ('2024-09-10', 48), ('2024-09-15', 49), ('2024-09-20', 50);
-INSERT INTO proyectomysql.historialCamper(estadoAnterior,estadoNuevo,idCamper) VALUES
+INSERT INTO proyectoMysql.historialCamper(estadoAnterior,estadoNuevo,idCamper) VALUES
 ('Inscrito', 'En formación', 1), ('En formación', 'Graduado', 2), ('Inscrito', 'En formación', 3), 
 ('En formación', 'Desertó', 4), ('Inscrito', 'En formación', 5), ('En formación', 'Graduado', 6), 
 ('Inscrito', 'En formación', 7), ('En formación', 'Desertó', 8), ('Inscrito', 'En formación', 9), 
@@ -530,7 +540,7 @@ INSERT INTO proyectomysql.historialCamper(estadoAnterior,estadoNuevo,idCamper) V
 ('Inscrito', 'En formación', 43), ('En formación', 'Desertó', 44), ('Inscrito', 'En formación', 45), 
 ('En formación', 'Graduado', 46), ('Inscrito', 'En formación', 47), ('En formación', 'Desertó', 48), 
 ('Inscrito', 'En formación', 49), ('En formación', 'Graduado', 50);
-INSERT INTO proyectomysql.detalleGrupo(idGrupo,idCamper) VALUES 
+INSERT INTO proyectoMysql.detalleGrupo(idGrupo,idCamper) VALUES 
 (1, 1), (1, 2), (1, 3), (1, 4), (1, 5), 
 (2, 6), (2, 7), (2, 8), (2, 9), (2, 10), 
 (3, 11), (3, 12), (3, 13), (3, 14), (3, 15), 
@@ -541,7 +551,7 @@ INSERT INTO proyectomysql.detalleGrupo(idGrupo,idCamper) VALUES
 (8, 36), (8, 37), (8, 38), (8, 39), (8, 40), 
 (9, 41), (9, 42), (9, 43), (9, 44), (9, 45), 
 (10, 46), (10, 47), (10, 48), (10, 49), (10, 50);
-INSERT INTO proyectomysql.telefono(telefono,idCamper) VALUES
+INSERT INTO proyectoMysql.telefono(telefono,idCamper) VALUES
 ('3001234567', 1), ('3002345678', 2), ('3003456789', 3), ('3004567890', 4), ('3005678901', 5), 
 ('3011234567', 6), ('3012345678', 7), ('3013456789', 8), ('3014567890', 9), ('3015678901', 10), 
 ('3021234567', 11), ('3022345678', 12), ('3023456789', 13), ('3024567890', 14), ('3025678901', 15), 
@@ -552,7 +562,7 @@ INSERT INTO proyectomysql.telefono(telefono,idCamper) VALUES
 ('3071234567', 36), ('3072345678', 37), ('3073456789', 38), ('3074567890', 39), ('3075678901', 40), 
 ('3081234567', 41), ('3082345678', 42), ('3083456789', 43), ('3084567890', 44), ('3085678901', 45), 
 ('3091234567', 46), ('3092345678', 47), ('3093456789', 48), ('3094567890', 49), ('3095678901', 50);
-INSERT INTO proyectomysql.matricula(fecha,idCamper,idModuloRuta) VALUES
+INSERT INTO proyectoMysql.matricula(fecha,idCamper,idModuloRuta) VALUES
 ('2025-01-01', 1, 5), ('2025-01-02', 2, 10), ('2025-01-03', 3, 15), ('2025-01-04', 4, 20), ('2025-01-05', 5, 25), 
 ('2025-01-06', 6, 30), ('2025-01-07', 7, 35), ('2025-01-08', 8, 40), ('2025-01-09', 9, 45), ('2025-01-10', 10, 50), 
 ('2025-01-11', 11, 1), ('2025-01-12', 12, 6), ('2025-01-13', 13, 11), ('2025-01-14', 14, 16), ('2025-01-15', 15, 21), 
@@ -563,7 +573,7 @@ INSERT INTO proyectomysql.matricula(fecha,idCamper,idModuloRuta) VALUES
 ('2025-02-05', 36, 28), ('2025-02-06', 37, 33), ('2025-02-07', 38, 38), ('2025-02-08', 39, 43), ('2025-02-09', 40, 48), 
 ('2025-02-10', 41, 4), ('2025-02-11', 42, 9), ('2025-02-12', 43, 14), ('2025-02-13', 44, 19), ('2025-02-14', 45, 24), 
 ('2025-02-15', 46, 29), ('2025-02-16', 47, 34), ('2025-02-17', 48, 39), ('2025-02-18', 49, 44), ('2025-02-19', 50, 49);
-INSERT INTO proyectomysql.notafinal(nota,idMatricula) VALUES
+INSERT INTO proyectoMysql.notafinal(nota,idMatricula) VALUES
 (4.5, 1), (3.8, 2), (2.7, 3), (4.9, 4), (3.2, 5), 
 (5.0, 6), (2.5, 7), (4.1, 8), (3.7, 9), (4.3, 10), 
 (3.0, 11), (4.6, 12), (2.8, 13), (4.2, 14), (3.5, 15), 
@@ -574,7 +584,7 @@ INSERT INTO proyectomysql.notafinal(nota,idMatricula) VALUES
 (3.7, 36), (4.3, 37), (3.0, 38), (4.6, 39), (2.8, 40), 
 (4.2, 41), (3.5, 42), (4.0, 43), (3.9, 44), (2.6, 45), 
 (4.7, 46), (3.3, 47), (4.8, 48), (3.1, 49), (2.9, 50);
-INSERT INTO proyectomysql.calificaciones(calificacion,idEvaluacion,idMatricula) VALUES
+INSERT INTO proyectoMysql.calificaciones(calificacion,idEvaluacion,idMatricula) VALUES
 (4.5, 1, 1), (3.8, 2, 2), (2.7, 3, 3), (4.9, 4, 4), (3.2, 5, 5), 
 (5.0, 6, 6), (2.5, 7, 7), (4.1, 8, 8), (3.7, 9, 9), (4.3, 10, 10), 
 (3.0, 11, 11), (4.6, 12, 12), (2.8, 13, 13), (4.2, 14, 14), (3.5, 15, 15), 

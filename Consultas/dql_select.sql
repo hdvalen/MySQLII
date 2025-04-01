@@ -4,29 +4,43 @@
 SELECT nombre,apellido FROM campers
 INNER JOIN estadoCamper ON campers.idEstadoCamper = estadoCamper.id 
 WHERE estadoCamper.tipoEstado = 'inscrito';
-
 --2. Listar los campers con estado "Aprobado".
 SELECT nombre,apellido FROM campers
 INNER JOIN estadoCamper ON campers.idEstadoCamper = estadoCamper.id 
 WHERE estadoCamper.tipoEstado = 'Aprobado';
-
 --3. Mostrar los campers que ya están cursando alguna ruta.
-SELECT nombre,apellido FROM campers
+SELECT campers.nombre,apellido FROM campers 
 INNER JOIN estadoCamper ON campers.idEstadoCamper = estadoCamper.id 
 WHERE estadoCamper.tipoEstado = 'Cursando';
-
 --4. Consultar los campers graduados por cada ruta.
-
+SELECT c.nombre, c.apellido,rt.nombreRuta FROM campers c
+INNER JOIN estadoCamper ec ON c.idEstadoCamper = ec.id
+INNER JOIN rutaAprendizaje rt ON c.idRutaAprendizaje = rt.id
+ WHERE ec.tipoEstado='Graduado';
 --5. Obtener los campers que se encuentran en estado "Expulsado" o "Retirado".
+SELECT campers.nombre,apellido FROM campers 
+INNER JOIN estadoCamper ON campers.idEstadoCamper = estadoCamper.id 
+WHERE estadoCamper.tipoEstado = 'Expulsado' OR estadoCamper.tipoEstado ='Retirado';
 --6. Listar campers con nivel de riesgo “Alto”.
-SELECT nombre,apellido FROM campers
-INNER JOIN nivelRiesgo ON campers.idNivelRiesgo = nivelRiesgo.id
+SELECT c.nombre,c.apellido FROM campers c
+INNER JOIN nivelRiesgo ON c.idNivelRiesgo = nivelRiesgo.id
 WHERE nivelRiesgo.tipoNivel = 'Alto';
-
 --7. Mostrar el total de campers por cada nivel de riesgo.
+SELECT  n.tipoNivel, COUNT(c.id) FROM campers c
+INNER JOIN nivelRiesgo n ON c.idNivelRiesgo = n.id
+GROUP BY n.tipoNivel;
 --8. Obtener campers con más de un número telefónico registrado.
+SELECT c.nombre, c.apellido, COUNT(t.telefono) FROM campers c
+INNER JOIN telefono t ON c.id= t.idCamper
+GROUP BY c.nombre, c.apellido
+HAVING COUNT (t.telefono)>1;
 --9. Listar los campers y sus respectivos acudientes y teléfonos.
+SELECT c.nombre, c.apellido,a.nombre, t.telefono FROM campers c
+INNER JOIN acudiente a ON c.idAcudiente = a.id
+INNER JOIN telefono t ON c.id = t.idCamper;
 --10. Mostrar campers que aún no han sido asignados a una ruta.
+SELECT c.nombre, c.apellido,c.identificacion FROM campers c
+WHERE c.idRutaAprendizaje IS NULL;
 
 -- Evaluaciones --
 
@@ -41,14 +55,29 @@ WHERE nivelRiesgo.tipoNivel = 'Alto';
 --9. Listar los mejores 5 campers por nota final en cada ruta.
 --10. Mostrar cuántos campers pasaron cada módulo por ruta.
 
--- Rutas y Areas de Entrenamiento --
+-- Rutas y Areas de Entrenamiento ---
 
 -- 1. Mostrar todas las rutas de entrenamiento disponibles.
+SELECT  ra.nombreRuta, emr.estado FROM rutaAprendizaje ra
+INNER JOIN modulosRuta mr ON ra.id = mr.idRutaAprendizaje
+INNER JOIN estadoModuloR emr ON mr.idEstadoModuloR = emr.id
+WHERE emr.estado = 'Disponible';
 -- 2. Obtener las rutas con su SGDB principal y alternativo.
+SELECT 
 -- 3. Listar los módulos asociados a cada ruta.
+SELECT ra.nombreRuta, m.nombreModulo FROM rutaAprendizaje ra
+INNER JOIN modulosRuta mr ON ra.id = mr.idRutaAprendizaje
+INNER JOIN modulos m ON mr.idModulo = m.id;
 -- 4. Consultar cuántos campers hay en cada ruta.
+SELECT ra.nombreRuta, COUNT(c.id) FROM rutaAprendizaje ra
+INNER JOIN campers c ON ra.id = c.idRutaAprendizaje
+GROUP BY ra.nombreRuta;
 -- 5. Mostrar las áreas de entrenamiento y su capacidad máxima.
+SELECT ns.nombreSalon, ns.capacidad FROM salon ns;
 -- 6. Obtener las áreas que están ocupadas al 100%.
+SELECT s.nombreSalon, es.nombreEstado FROM salon s
+INNER JOIN estadoSalon es ON s.idEstadoSalon = es.id
+WHERE es.nombreEstado = 'Ocupado';
 -- 7. Verificar la ocupación actual de cada área.
 -- 8. Consultar los horarios disponibles por cada área.
 -- 9. Mostrar las áreas con más campers asignados.
@@ -57,7 +86,11 @@ WHERE nivelRiesgo.tipoNivel = 'Alto';
 -- Trainers --
 
 -- 1. Listar todos los entrenadores registrados.
+SELECT nombre,apellido FROM trainers;
 -- 2. Mostrar los trainers con sus horarios asignados.
+SELECT t.nombre,t.apellido, h.franjaHoraria FROM trainers t
+INNER JOIN trainerHorario th ON t.id= th.idTrainer
+INNER JOIN horario h ON th.idHorario = h.id;
 -- 3. Consultar los trainers asignados a más de una ruta.
 -- 4. Obtener el número de campers por trainer.
 -- 5. Mostrar las áreas en las que trabaja cada trainer.

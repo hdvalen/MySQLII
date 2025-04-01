@@ -57,9 +57,11 @@ CREATE TABLE IF NOT EXISTS estadoSalon(
 CREATE TABLE IF NOT EXISTS salon(
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombreSalon VARCHAR(50),
+    capacidad VARCHAR(50),
     idEstadoSalon INT,
     CONSTRAINT id_estado_salon_FK FOREIGN KEY (idEstadoSalon) REFERENCES estadoSalon(id)
 );
+
 CREATE TABLE IF NOT EXISTS sgdb(
     id INT AUTO_INCREMENT PRIMARY KEY,
     descripcion VARCHAR(50)
