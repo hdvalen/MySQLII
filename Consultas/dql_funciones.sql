@@ -434,3 +434,8 @@ BEGIN
         c.nombre, c.apellido;
 END //
 DELIMITER ;
+
+
+CALL CalcularPromedioPonderadoCamper(1);
+CALL VerificarGraduacionCamper(5);
+CALL ObtenerPromedioNotasPorRuta();
