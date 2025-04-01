@@ -63,7 +63,10 @@ INNER JOIN modulosRuta mr ON ra.id = mr.idRutaAprendizaje
 INNER JOIN estadoModuloR emr ON mr.idEstadoModuloR = emr.id
 WHERE emr.estado = 'Disponible';
 -- 2. Obtener las rutas con su SGDB principal y alternativo.
-SELECT 
+SELECT ra.nombreRuta, sr.idSGDB, sr.idSGDBA FROM rutaAprendizaje ra 
+INNER JOIN sRuta sr ON ra.id= sr.idRutaAprendizaje
+INNER JOIN sgdb sg ON sr.idSGDB = sg.id
+INNER JOIN sgdb sga ON sr.idSGDBA = sg.id;
 -- 3. Listar los módulos asociados a cada ruta.
 SELECT ra.nombreRuta, m.nombreModulo FROM rutaAprendizaje ra
 INNER JOIN modulosRuta mr ON ra.id = mr.idRutaAprendizaje
@@ -77,11 +80,20 @@ SELECT ns.nombreSalon, ns.capacidad FROM salon ns;
 -- 6. Obtener las áreas que están ocupadas al 100%.
 SELECT s.nombreSalon, es.nombreEstado FROM salon s
 INNER JOIN estadoSalon es ON s.idEstadoSalon = es.id
-WHERE es.nombreEstado = 'Ocupado';
+WHERE es.nombreEstado = 'Ocupado'; 
 -- 7. Verificar la ocupación actual de cada área.
+SELECT s.nombreSalon, es.nombreEstado FROM salon s
+INNER JOIN estadoSalon es ON s.idEstadoSalon = es.id
+WHERE es.nombreEstado = 'Ocupado' OR es.nombreEstado = 'No disponible'; 
 -- 8. Consultar los horarios disponibles por cada área.
 -- 9. Mostrar las áreas con más campers asignados.
 -- 10. Listar las rutas con sus respectivos trainers y áreas asignadas.
+SELECT ra.nombreRuta, t.nombre, sl.nombreSalon FROM rutaAprendizaje ra 
+INNER JOIN campers c ON ra.id = c.idRutaAprendizaje
+INNER JOIN sedes s ON c.idSede = s.id 
+INNER JOIN trainers t ON s.id = t.idSede
+INNER JOIN trainerHorario th ON t.id= th.idTrainer
+INNER JOIN salon sl ON th.idSalon = sl.id;
 
 -- Trainers --
 
@@ -92,12 +104,32 @@ SELECT t.nombre,t.apellido, h.franjaHoraria FROM trainers t
 INNER JOIN trainerHorario th ON t.id= th.idTrainer
 INNER JOIN horario h ON th.idHorario = h.id;
 -- 3. Consultar los trainers asignados a más de una ruta.
+SELECT t.nombre, t.apellido, COUNT(g.idRutaAprendizaje) FROM trainers t
+INNER JOIN grupo g ON t.id = g.idTrainer
+GROUP BY t.nombre, t.apellido
+HAVING COUNT (g.idRutaAprendizaje)>1;
 -- 4. Obtener el número de campers por trainer.
+SELECT t.nombre, t.apellido, COUNT(c.id) FROM trainers t
+INNER JOIN grupo g ON t.id = g.idTrainer
+INNER JOIN sedes s ON t.idSede=s.id
+INNER JOIN campers c ON s.id = c.idSede
+GROUP BY t.nombre, t.apellido;
 -- 5. Mostrar las áreas en las que trabaja cada trainer.
+SELECT t.nombre,t.apellido,s.nombreSalon FROM trainers t
+INNER JOIN trainerHorario th ON t.id= th.idTrainer
+INNER JOIN salon s ON th.idSalon = s.id;
 -- 6. Listar los trainers sin asignación de área o ruta.
 -- 7. Mostrar cuántos módulos están a cargo de cada trainer.
+SELECT t.nombre, t.apellido,m.nombreModulo FROM trainers t
+INNER JOIN grupo g ON t.id = g.idTrainer
+INNER JOIN rutaAprendizaje ra ON g.idRutaAprendizaje = ra.id
+INNER JOIN modulosRuta mr ON ra.id = mr.idRutaAprendizaje
+INNER JOIN modulos m ON mr.idModulo= m.id;
 -- 8. Obtener el trainer con mejor rendimiento promedio de campers.
 -- 9. Consultar los horarios ocupados por cada trainer.
+SELECT t.nombre, t.apellido, h.franjaHoraria FROM trainers t
+INNER JOIN trainerHorario th ON t.id= th.idTrainer
+INNER JOIN horario h ON th.idHorario = h.id;
 -- 10. Mostrar la disponibilidad semanal de cada trainer.
 
 

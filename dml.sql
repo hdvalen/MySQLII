@@ -485,12 +485,10 @@ INSERT INTO proyectoMysql.campers(nombre, apellido,identificacion,telefono,fecha
 ('Laura', 'Ferrer', '987654321', '3478901234', '2025-08-20', 47, 2, 47, 2, 47),
 ('Marcelo', 'Ruiz', '654321987', '3489012345', '2025-08-25', 48, 3, 48, 3, 48),
 ('Joaquín', 'Castro', '543210987', '3490123456', '2025-09-01', 49, 1, 49, 1, 49),
-('Rosa', 'Pérez', '432109876', '3501234567', '2025-09-05', 50, 2, 50, 2, 50)
-('Andres', 'Delgado', '546545', '32120326', '2025-11-05', 50, 2, 50, 5, 19),
-('Juan', 'Ruiz', '546545', '32120326', '2025-11-05', 50, 2, 50, 5, 12);
+('Rosa', 'Pérez', '432109876', '3501234567', '2025-09-05', 50, 2, 50, 2, 50);
 INSERT INTO proyectoMysql.campers(nombre, apellido,identificacion,telefono,fechaInscripcion, idSede, idNivelRiesgo,idAcudiente, idEstadoCamper) VALUES 
 ('Sebastian', 'Suarez', '546545', '32120326', '2025-11-05', 50, 2, 50, 6);
-INSERT INTO proyectoMysql.direccioncamper(idCamper, idDireccion) VALUES
+INSERT INTO proyectoMysql.direccionCamper(idCamper, idDireccion) VALUES
 (1, 10), (2, 12), (3, 03), (4, 14), (5, 15),
 (6, 16), (7, 17), (8, 08), (9, 09), (10, 10),
 (11, 11), (12, 12), (13, 13), (14, 14), (15, 15),
@@ -573,8 +571,8 @@ INSERT INTO proyectoMysql.matricula(fecha,idCamper,idModuloRuta) VALUES
 ('2025-02-05', 36, 28), ('2025-02-06', 37, 33), ('2025-02-07', 38, 38), ('2025-02-08', 39, 43), ('2025-02-09', 40, 48), 
 ('2025-02-10', 41, 4), ('2025-02-11', 42, 9), ('2025-02-12', 43, 14), ('2025-02-13', 44, 19), ('2025-02-14', 45, 24), 
 ('2025-02-15', 46, 29), ('2025-02-16', 47, 34), ('2025-02-17', 48, 39), ('2025-02-18', 49, 44), ('2025-02-19', 50, 49);
-INSERT INTO proyectoMysql.notafinal(nota,idMatricula) VALUES
-(4.5, 1), (3.8, 2), (2.7, 3), (4.9, 4), (3.2, 5), 
+INSERT INTO proyectoMysql.notaFinal(nota,idMatricula) VALUES
+(4.5, 1), (3.8, 2), (2.7, 3), (4.9, 4), (3.2, 5),
 (5.0, 6), (2.5, 7), (4.1, 8), (3.7, 9), (4.3, 10), 
 (3.0, 11), (4.6, 12), (2.8, 13), (4.2, 14), (3.5, 15), 
 (4.0, 16), (3.9, 17), (2.6, 18), (4.7, 19), (3.3, 20), 

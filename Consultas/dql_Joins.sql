@@ -1,9 +1,20 @@
 -- JOINS Basicos --
 
 -- 1. Obtener los nombres completos de los campers junto con el nombre de la ruta a la que están inscritos.
+SELECT c.nombre, c.apellido, ra.nombreRuta FROM campers c
+INNER JOIN rutaAprendizaje ra ON c.idRutaAprendizaje = ra.id;
 -- 2. Mostrar los campers con sus evaluaciones (nota teórica, práctica, quizzes y nota final) por cada módulo.
 -- 3. Listar todos los módulos que componen cada ruta de entrenamiento.
+SELECT ra.nombreRuta, m.nombreModulo FROM rutaAprendizaje ra
+INNER JOIN modulosRuta mr ON ra.id = mr.idRutaAprendizaje
+INNER JOIN modulos m ON mr.idModulo = m.id;
 -- 4. Consultar las rutas con sus trainers asignados y las áreas en las que imparten clases.
+SELECT ra.nombreRuta, t.nombre, sl.nombreSalon FROM rutaAprendizaje ra 
+INNER JOIN campers c ON ra.id = c.idRutaAprendizaje
+INNER JOIN sedes s ON c.idSede = s.id 
+INNER JOIN trainers t ON s.id = t.idSede
+INNER JOIN trainerHorario th ON t.id= th.idTrainer
+INNER JOIN salon sl ON th.idSalon = sl.id;
 -- 5. Mostrar los campers junto con el trainer responsable de su ruta actual.
 -- 6. Obtener el listado de evaluaciones realizadas con nombre de camper, módulo y ruta.
 -- 7. Listar los trainers y los horarios en que están asignados a las áreas de entrenamiento.
