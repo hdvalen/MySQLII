@@ -242,22 +242,257 @@ ORDER BY  t.nombre, t.apellido, YEARWEEK(h.fecha), DAYOFWEEK(h.fecha),  h.franja
 --  Subconsultas y Cálculos Avanzados --
 
 -- 1. Obtener los campers con la nota más alta en cada módulo.
+SELECT c.nombre, c.apellido, md.nombreModulo, nf.nota
+FROM campers c
+JOIN matricula m ON c.id = m.idCamper
+JOIN modulosRuta mr ON m.idModuloRuta = mr.id
+JOIN modulos md ON mr.idModulo = md.id
+JOIN notaFinal nf ON m.id = nf.idMatricula
+WHERE nf.nota = (SELECT MAX(nf2.nota) FROM notaFinal nf2
+                 JOIN matricula m2 ON nf2.idMatricula = m2.id
+                 JOIN modulosRuta mr2 ON m2.idModuloRuta = mr2.id
+                 WHERE mr2.idModulo = mr.idModulo)
+ORDER BY md.nombreModulo, nf.nota DESC;
+
 -- 2. Mostrar el promedio general de notas por ruta y comparar con el promedio global.
+WITH PromedioGlobal AS (
+    SELECT AVG(nf.nota) AS promedio_global
+    FROM notaFinal nf
+)
+SELECT 
+    ra.nombreRuta AS ruta,
+    AVG(nf.nota) AS promedio_ruta,
+    pg.promedio_global,
+    CASE 
+        WHEN AVG(nf.nota) > pg.promedio_global THEN 'Por encima del promedio global'
+        WHEN AVG(nf.nota) < pg.promedio_global THEN 'Por debajo del promedio global'
+        ELSE 'Igual al promedio global'
+    END AS comparacion
+FROM rutaAprendizaje ra
+JOIN modulosRuta mr ON ra.id = mr.idRutaAprendizaje
+JOIN matricula m ON mr.id = m.idModuloRuta
+JOIN notaFinal nf ON m.id = nf.idMatricula
+CROSS JOIN PromedioGlobal pg
+GROUP BY ra.nombreRuta, pg.promedio_global
+ORDER BY promedio_ruta DESC;
 -- 3. Listar las áreas con más del 80% de ocupación.
+SELECT 
+    s.nombreSalon AS area,
+    s.capacidad,
+    COUNT(c.id) AS ocupacion_actual,
+    ROUND((COUNT(c.id) * 100.0 / s.capacidad), 2) AS porcentaje_ocupacion
+FROM salon s
+LEFT JOIN detalleGrupo dg ON s.id = dg.id
+LEFT JOIN campers c ON dg.idCamper = c.id
+GROUP BY s.id, s.nombreSalon, s.capacidad
+HAVING ROUND((COUNT(c.id) * 100.0 / s.capacidad), 2) > 80
+ORDER BY porcentaje_ocupacion DESC;
 -- 4. Mostrar los trainers con menos del 70% de rendimiento promedio.
+SELECT 
+    t.id AS trainer_id,
+    t.nombre AS trainer_nombre,
+    t.apellido AS trainer_apellido,
+    AVG(nf.nota) AS promedio_rendimiento
+FROM trainers t
+JOIN grupo g ON t.id = g.idTrainer
+JOIN detalleGrupo dg ON g.id = dg.idGrupo
+JOIN campers c ON dg.idCamper = c.id
+JOIN matricula m ON c.id = m.idCamper
+JOIN notaFinal nf ON m.id = nf.idMatricula
+GROUP BY t.id, t.nombre, t.apellido
+HAVING AVG(nf.nota) < 70
+ORDER BY promedio_rendimiento ASC;
 -- 5. Consultar los campers cuyo promedio está por debajo del promedio general.
+WITH PromedioGlobal AS (
+    SELECT AVG(nf.nota) AS promedio_global
+    FROM notaFinal nf
+)
+SELECT 
+    c.id AS camper_id,
+    c.nombre AS camper_nombre,
+    c.apellido AS camper_apellido,
+    AVG(nf.nota) AS promedio_camper,
+    pg.promedio_global
+FROM campers c
+JOIN matricula m ON c.id = m.idCamper
+JOIN notaFinal nf ON m.id = nf.idMatricula
+CROSS JOIN PromedioGlobal pg
+GROUP BY c.id, c.nombre, c.apellido, pg.promedio_global
+HAVING AVG(nf.nota) < pg.promedio_global
+ORDER BY promedio_camper ASC;
 -- 6. Obtener los módulos con la menor tasa de aprobación.
+SELECT 
+    md.id AS modulo_id,
+    md.nombreModulo,
+    COUNT(CASE WHEN nf.nota >= 60 THEN 1 END) AS campers_aprobados,
+    COUNT(nf.nota) AS total_campers,
+    ROUND((COUNT(CASE WHEN nf.nota >= 60 THEN 1 END) * 100.0 / COUNT(nf.nota)), 2) AS porcentaje_aprobacion
+FROM modulos md
+JOIN modulosRuta mr ON md.id = mr.idModulo
+JOIN matricula m ON mr.id = m.idModuloRuta
+JOIN notaFinal nf ON m.id = nf.idMatricula
+GROUP BY md.id, md.nombreModulo
+ORDER BY porcentaje_aprobacion ASC;
 -- 7. Listar los campers que han aprobado todos los módulos de su ruta.
+SELECT 
+    c.id AS camper_id,
+    c.nombre AS camper_nombre,
+    c.apellido AS camper_apellido,
+    ra.nombreRuta AS ruta
+FROM campers c
+JOIN matricula m ON c.id = m.idCamper
+JOIN modulosRuta mr ON m.idModuloRuta = mr.id
+JOIN rutaAprendizaje ra ON mr.idRutaAprendizaje = ra.id
+JOIN notaFinal nf ON m.id = nf.idMatricula
+GROUP BY c.id, c.nombre, c.apellido, ra.nombreRuta
+HAVING MIN(nf.nota) >= 60
+ORDER BY c.nombre, c.apellido;
 -- 8. Mostrar rutas con más de 10 campers en bajo rendimiento.
+SELECT 
+    ra.id AS ruta_id,
+    ra.nombreRuta AS ruta,
+    COUNT(c.id) AS campers_bajo_rendimiento
+FROM rutaAprendizaje ra
+JOIN modulosRuta mr ON ra.id = mr.idRutaAprendizaje
+JOIN matricula m ON mr.id = m.idModuloRuta
+JOIN notaFinal nf ON m.id = nf.idMatricula
+JOIN campers c ON m.idCamper = c.id
+WHERE nf.nota < 60
+GROUP BY ra.id, ra.nombreRuta
+HAVING COUNT(c.id) > 10
+ORDER BY campers_bajo_rendimiento DESC;
 -- 9. Calcular el promedio de rendimiento por SGDB principal.
+SELECT 
+    sg.descripcion AS sgdb_principal,
+    AVG(nf.nota) AS promedio_rendimiento
+FROM rutaAprendizaje ra
+JOIN sRuta sr ON ra.id = sr.idRutaAprendizaje
+JOIN sgdb sg ON sr.idSGDB = sg.id
+JOIN modulosRuta mr ON ra.id = mr.idRutaAprendizaje
+JOIN matricula m ON mr.id = m.idModuloRuta
+JOIN notaFinal nf ON m.id = nf.idMatricula
+GROUP BY sg.descripcion
+ORDER BY promedio_rendimiento DESC;
 -- 10. Listar los módulos con al menos un 30% de campers reprobados.
+SELECT 
+    md.id AS modulo_id,
+    md.nombreModulo,
+    COUNT(CASE WHEN nf.nota < 60 THEN 1 END) AS campers_reprobados,
+    COUNT(nf.nota) AS total_campers,
+    ROUND((COUNT(CASE WHEN nf.nota < 60 THEN 1 END) * 100.0 / COUNT(nf.nota)), 2) AS porcentaje_reprobados
+FROM modulos md
+JOIN modulosRuta mr ON md.id = mr.idModulo
+JOIN matricula m ON mr.id = m.idModuloRuta
+JOIN notaFinal nf ON m.id = nf.idMatricula
+GROUP BY md.id, md.nombreModulo
+HAVING ROUND((COUNT(CASE WHEN nf.nota < 60 THEN 1 END) * 100.0 / COUNT(nf.nota)), 2) >= 30
+ORDER BY porcentaje_reprobados DESC;
 -- 11. Mostrar el módulo más cursado por campers con riesgo alto.
+SELECT 
+    md.id AS modulo_id,
+    md.nombreModulo,
+    COUNT(c.id) AS total_campers_riesgo_alto
+FROM modulos md
+JOIN modulosRuta mr ON md.id = mr.idModulo
+JOIN matricula m ON mr.id = m.idModuloRuta
+JOIN campers c ON m.idCamper = c.id
+JOIN nivelRiesgo nr ON c.idNivelRiesgo = nr.id
+WHERE nr.tipoNivel = 'Alto'
+GROUP BY md.id, md.nombreModulo
+ORDER BY total_campers_riesgo_alto DESC
+LIMIT 1;
 -- 12. Consultar los trainers con más de 3 rutas asignadas.
+SELECT 
+    t.id AS trainer_id,
+    t.nombre AS trainer_nombre,
+    t.apellido AS trainer_apellido,
+    COUNT(g.idRutaAprendizaje) AS total_rutas_asignadas
+FROM trainers t
+JOIN grupo g ON t.id = g.idTrainer
+GROUP BY t.id, t.nombre, t.apellido
+HAVING COUNT(g.idRutaAprendizaje) > 3
+ORDER BY total_rutas_asignadas DESC;
 -- 13. Listar los horarios más ocupados por áreas.
+SELECT 
+    s.nombreSalon AS area,
+    h.franjaHoraria,
+    COUNT(dg.idCamper) AS total_campers
+FROM salon s
+JOIN trainerHorario th ON s.id = th.idSalon
+JOIN horario h ON th.idHorario = h.id
+JOIN detalleGrupo dg ON th.idTrainer = dg.id
+GROUP BY s.nombreSalon, h.franjaHoraria
+ORDER BY total_campers DESC;
 -- 14. Consultar las rutas con el mayor número de módulos.
+SELECT 
+    ra.id AS ruta_id,
+    ra.nombreRuta AS ruta,
+    COUNT(mr.idModulo) AS total_modulos
+FROM rutaAprendizaje ra
+JOIN modulosRuta mr ON ra.id = mr.idRutaAprendizaje
+GROUP BY ra.id, ra.nombreRuta
+ORDER BY total_modulos DESC;
 -- 15. Obtener los campers que han cambiado de estado más de una vez.
+SELECT 
+    c.id AS camper_id,
+    c.nombre AS camper_nombre,
+    c.apellido AS camper_apellido,
+    COUNT(hc.EstadoAnterior) AS cambios_estado
+FROM campers c
+JOIN historialCamper hc ON c.id = hc.idCamper
+GROUP BY c.id, c.nombre, c.apellido
+HAVING COUNT(hc.EstadoAnterior) > 1
+ORDER BY cambios_estado DESC;
 -- 16. Mostrar las evaluaciones donde la nota teórica sea mayor a la práctica.
 -- 17. Listar los módulos donde la media de quizzes supera el 9.
+SELECT 
+    md.id AS modulo_id,
+    md.nombreModulo,
+    AVG(cal.calificacion) AS promedio_quizzes
+FROM modulos md
+JOIN modulosRuta mr ON md.id = mr.idModulo
+JOIN evaluacion e ON mr.id = e.idModuloRuta
+JOIN tipoEvaluacion te ON e.idTipoEvaluacion = te.id
+JOIN calificaciones cal ON e.id = cal.idEvaluacion
+WHERE te.tipo = 'Quiz'
+GROUP BY md.id, md.nombreModulo
+HAVING AVG(cal.calificacion) > 9
+ORDER BY promedio_quizzes DESC;
 -- 18. Consultar la ruta con mayor tasa de graduación.
+SELECT 
+    ra.id AS ruta_id,
+    ra.nombreRuta AS ruta,
+    COUNT(CASE WHEN ec.tipoEstado = 'Graduado' THEN c.id END) AS total_graduados,
+    COUNT(c.id) AS total_campers,
+    ROUND((COUNT(CASE WHEN ec.tipoEstado = 'Graduado' THEN c.id END) * 100.0 / COUNT(c.id)), 2) AS tasa_graduacion
+FROM rutaAprendizaje ra
+JOIN campers c ON ra.id = c.idRutaAprendizaje
+JOIN estadoCamper ec ON c.idEstadoCamper = ec.id
+GROUP BY ra.id, ra.nombreRuta
+ORDER BY tasa_graduacion DESC
+LIMIT 1;
 -- 19. Mostrar los módulos cursados por campers de nivel de riesgo medio o alto.
+SELECT 
+    md.id AS modulo_id,
+    md.nombreModulo,
+    c.id AS camper_id,
+    c.nombre AS camper_nombre,
+    c.apellido AS camper_apellido,
+    nr.tipoNivel AS nivel_riesgo
+FROM modulos md
+JOIN modulosRuta mr ON md.id = mr.idModulo
+JOIN matricula m ON mr.id = m.idModuloRuta
+JOIN campers c ON m.idCamper = c.id
+JOIN nivelRiesgo nr ON c.idNivelRiesgo = nr.id
+WHERE nr.tipoNivel IN ('Medio', 'Alto')
+ORDER BY md.nombreModulo, c.nombre, c.apellido;
 -- 20. Obtener la diferencia entre capacidad y ocupación en cada área.
+SELECT 
+    s.nombreSalon AS area,
+    s.capacidad AS capacidad_maxima,
+    COUNT(dg.idCamper) AS ocupacion_actual,
+    (s.capacidad - COUNT(dg.idCamper)) AS diferencia
+FROM salon s
+LEFT JOIN detalleGrupo dg ON s.idEstadoSalon = dg.id
+GROUP BY s.id, s.nombreSalon, s.capacidad
+ORDER BY diferencia DESC;

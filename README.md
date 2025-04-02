@@ -5,12 +5,13 @@
 Este proyecto tiene como objetivo diseñar y desarrollar una base de datos que permita gestionar de manera eficiente todas las operaciones relacionadas con el seguimiento académico de los campers matriculados en el programa intensivo de programación de **CampusLands**.
 
 La base de datos facilita la gestión de:
-- ✅ Inscripciones
-- ✅ Rutas de aprendizaje
-- ✅ Evaluaciones
-- ✅ Reportes
-- ✅ Asignaciones de entrenadores y áreas de entrenamiento
 
+- ✅ Inscripción y seguimiento de campers
+- ✅ Gestión de rutas de aprendizaje y módulos
+- ✅ Evaluaciones y calificaciones
+- ✅ Asignación de trainers y áreas de entrenamiento
+- ✅ Seguimiento de progreso académico
+- ✅ Generación de reportes de rendimiento
 
 ---
 
@@ -71,5 +72,4 @@ SOURCE dql_eventos.sql;
 
 ---
 
-✨ **Listo!** Ahora tu base de datos está configurada y lista para su uso. 🚀
 
