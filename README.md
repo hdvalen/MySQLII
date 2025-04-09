@@ -2,11 +2,11 @@
 
 ## 📌 Descripción del Proyecto
 
-Este proyecto tiene como objetivo diseñar y desarrollar una base de datos que permita gestionar de manera eficiente todas las operaciones relacionadas con el seguimiento académico de los campers matriculados en el programa intensivo de programación de **CampusLands**.
+Este proyecto tiene como objetivo diseñar y desarrollar una base de datos que permita gestionar de manera eficiente todas las operaciones relacionadas con el seguimiento académico de estudiantes.
 
 La base de datos facilita la gestión de:
 
-- ✅ Inscripción y seguimiento de campers
+- ✅ Inscripción y seguimiento de los estudiantes
 - ✅ Gestión de rutas de aprendizaje y módulos
 - ✅ Evaluaciones y calificaciones
 - ✅ Asignación de trainers y áreas de entrenamiento
